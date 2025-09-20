@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONSOLAS & VIDEOJUEGOS</title>
+  <style>
+  
+    /* RESET GENERAL */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
+      background: #121212;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* FONDO ANIMADO */
+    .fondo-gradiente {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #ff0040, #00ffff, #ffcc00, #ff00ff);
+      background-size: 400% 400%;
+      animation: animarGradiente 15s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes animarGradiente {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* HEADER */
+    header {
+      padding: 2rem;
+      background: rgba(0,0,0,0.5);
+      border-bottom: 2px solid #00ffcc;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #00ffff;
+      animation: parpadeo 6s infinite;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #ffcc00;
+      margin-bottom: 15px;
+    }
+
+    @keyframes parpadeo {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
+    /* BOTONES HEADER */
+    .header-botones {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .header-botones button {
+      padding: 8px 16px;
+      background-color: #00ffff;
+      color: #121212;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .header-botones button:hover {
+      background-color: #00ccff;
+      transform: translateY(-2px);
+    }
+
+    /* BUSCADOR */
+    .buscador {
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .buscador input {
+      padding: 8px 12px;
+      width: 250px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .buscador button {
+      padding: 8px 15px;
+      background-color: #00ffff;
+      color: #121212;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .buscador button:hover {
+      background-color: #00ccff;
+    }
+
+    /* MAIN - TARJETAS */
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 240px;
+    }
+
+    .precio {
+      margin-bottom: 8px;
+      background: #ff4757;
+      color: #fff;
+      font-weight: bold;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 1rem;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    }
+
+    .info-card {
+      background: rgba(0,0,0,0.7);
+      border-radius: 12px;
+      padding: 10px;
+      width: 100%;
+      box-shadow: 0 0 15px rgba(0,255,255,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255,255,0,0.8);
+    }
+
+    .info-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border: 2px solid #00ffcc;
+    }
+
+    .info-card h3 {
+      margin: 0 0 5px 0;
+      font-size: 1.2rem;
+      color: #ff4757;
+    }
+
+    .info-card p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin: 5px 0;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0,0,0,0.5);
+      border-top: 2px solid #00ffcc;
+      margin-top: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    @media (max-width: 768px) {
+      main { gap: 15px; }
+      .card-wrapper { width: 90%; }
+    }
+
+  </style>
+  
+</head>
+
+<body>
+
+  <div class="fondo-gradiente"></div>
+
+  <header>
+    <h1>CONSOLAS & VIDEOJUEGOS</h1>
+    <p>Todo Lo Que Necesitas Saber Sobre Tus Juegos Favoritos</p>
+    <div class="header-botones">
+      <button onclick="mostrarHorario()">⏰ Horario</button>
+      <button onclick="mostrarContacto()">📞 Contacto</button>
+    </div>
+  </header>
+
+  <!-- Buscador -->
+  <div class="buscador">
+    <input type="text" id="buscar" placeholder="Buscar consola..." />
+    <button id="btnBuscar">Buscar</button>
+  </div>
+
+  <main id="galeria">
+    <!-- Aquí se generarán las consolas con JS -->
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Info Consolas | Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    const consolas = [
+      { nombre:"Consola Retro", precio:"49,99 €", img:"imagenes2/consola_retro.webp", link:"https://www.carrefour.es/gaming/consolas-retro/F-13riiZ16p9/c", desc:"Consola para juegos de 8 bits con 16 juegos instalados. Compatible con cartuchos Pegasus antiguos." },
+      { nombre:"Atari 2600", precio:"59,99 €", img:"imagenes2/atari_2600.jpg", link:"https://goo.su/K7KE4", desc:"Videoconsola lanzada en 1977 como Atari VCS. Popularizó los cartuchos intercambiables." },
+      { nombre:"Nintendo NES", precio:"60,99 €", img:"imagenes2/consola_nes.png", link:"https://goo.su/kCf6PAz", desc:"Consola de 8 bits de Nintendo. Lanzada a finales de los 80 en Japón, Norteamérica y Europa." },
+      { nombre:"Super Nintendo SNES", precio:"69,99 €", img:"imagenes2/consola_snes.jpg", link:"https://goo.su/eRBYD", desc:"Consola de 16 bits de Nintendo. Conocida como Super Famicom en Japón." },
+      { nombre:"Game Boy", precio:"39,99 €", img:"imagenes2/game_boy.jpg", link:"https://goo.su/bFCk5x", desc:"Videoconsola portátil de 8 bits lanzada en 1989 por Nintendo." },
+      { nombre:"PlayStation 1", precio:"79,99 €", img:"imagenes2/ps1.png", link:"https://www.on-digital.es/267-consolas-ps1", desc:"Primera consola de Sony, lanzada en 1994 en Japón y 1995 en el resto del mundo." },
+      { nombre:"Sega Mega Drive", precio:"69,99 €", img:"imagenes2/sega.jpg", link:"https://sega.fandom.com/es/wiki/Sega_Mega_Drive", desc:"Consola de 16 bits de Sega, sucesora de Master System y competidora de SNES." },
+      { nombre:"Nintendo GameCube", precio:"89,99 €", img:"imagenes2/game_cube.jpg", link:"https://goo.su/KH1r01", desc:"Quinta consola de sobremesa de Nintendo. Procesador IBM PowerPC y GPU ATI." },
+      { nombre:"PlayStation 2", precio:"79,99 €", img:"imagenes2/ps2.jpg", link:"https://goo.su/s9C5B0R", desc:"Segunda consola de Sony. Competidora de Dreamcast, GameCube y Xbox." },
+      { nombre:"PlayStation 3", precio:"99,99 €", img:"imagenes2/ps3.jpg", link:"https://www.todoconsolas.com/24-consolas-ps3", desc:"Tercera consola de Sony, parte de la séptima generación." },
+      { nombre:"PlayStation 4", precio:"109,99 €", img:"imagenes2/ps4.jpg", link:"https://www.playstation.com/es-es/ps4/", desc:"Cuarta consola de sobremesa de Sony, octava generación." },
+      { nombre:"Xbox One", precio:"499,99 €", img:"imagenes2/xbox_one.jpg", link:"https://goo.su/7QqB0F", desc:"Consola de Microsoft lanzada en 2013, parte de la octava generación." },
+      { nombre:"Nintendo Wii", precio:"399,99 €", img:"imagenes2/wii.png", link:"https://goo.su/fhmUJ2", desc:"Consola lanzada en 2006, sucesora de GameCube." },
+      { nombre:"PlayStation 5", precio:"499,99 €", img:"imagenes2/play_station_5.jpg", link:"https://www.playstation.com/es-es/ps5/", desc:"Quinta consola de Sony, sucesora de PS4, lanzada en 2019." },
+      { nombre:"Xbox Series X", precio:"499,99 €", img:"imagenes2/xbox_series_x.jpg", link:"https://www.xbox.com/es-ES/consoles/xbox-series-x", desc:"Consola de Microsoft con retrocompatibilidad, gráficos 4K y SSD de 1TB." },
+      { nombre:"Nintendo Switch", precio:"349,99 €", img:"imagenes2/nintendo_switch.webp", link:"https://www.nintendo.com/es-es/Hardware/Familia-Nintendo-Switch/Nintendo-Switch/Nintendo-Switch-1148779.html", desc:"Consola híbrida con Joy-Con desmontables y batería de larga duración." },
+      { nombre:"Rog Xbox", precio:"449,99 €", img:"imagenes2/rog_xbox.jpg", link:"https://www.xbox.com/es-ES/handhelds/rog-xbox-ally", desc:"Futura consola portátil de Asus y Microsoft, sucesora de Asus ROG Ally. Lanzamiento: 16 de octubre de 2025." },
+      { nombre:"Steam Deck", precio:"399,99 €", img:"imagenes2/steam_deck.jpg", link:"https://store.steampowered.com/steamdeck/", desc:"PC de juegos portátil de Valve, compatible con la biblioteca de Steam y modo escritorio." },
+      { nombre:"VR Box", precio:"59,99 €", img:"imagenes2/vr_box.jpg", link:"https://vrbox.es/", desc:"Gafas de realidad virtual que crean sensación de inmersión mediante entornos simulados." }
+    ];
+
+    const galeria = document.getElementById("galeria");
+
+    function mostrarConsolas(filtro="") {
+      galeria.innerHTML = "";
+      consolas
+        .filter(c => c.nombre.toLowerCase().includes(filtro.toLowerCase()))
+        .forEach(c => {
+          const div = document.createElement("div");
+          div.className = "card-wrapper";
+          div.innerHTML = `
+            <div class="precio">${c.precio}</div>
+            <div class="info-card">
+              <a href="${c.link}" target="_blank">
+                <img src="${c.img}" alt="${c.nombre}">
+              </a>
+              <h3>${c.nombre}</h3>
+              <p>${c.desc}</p>
+            </div>
+          `;
+          galeria.appendChild(div);
+        });
+    }
+
+    mostrarConsolas();
+
+    const inputBuscar = document.getElementById("buscar");
+    const btnBuscar = document.getElementById("btnBuscar");
+
+    function filtrar() {
+      mostrarConsolas(inputBuscar.value);
+    }
+
+    inputBuscar.addEventListener("input", filtrar);
+    btnBuscar.addEventListener("click", filtrar);
+
+    // Funciones botones
+    function mostrarHorario() {
+      alert("Horario de atención:\nLunes a Viernes: 10:00 - 20:00\nSábado: 10:00 - 18:00\nDomingo: Cerrado");
+    }
+
+    function mostrarContacto() {
+      alert("Contacto:\nEmail: info@consolasyvideojuegos.com\nTeléfono: +34 123 456 789");
+    }
+
+  </script>
+
+</body>
+</html>
